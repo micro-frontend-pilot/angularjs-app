@@ -7,5 +7,5 @@ async function load () {
 
 const AngularTestComponent=await load();
 
-angular.module('ngapp.mfe',[]).component('reactComponent', react2angular(AngularTestComponent.default,[]));
+angular.module('ngapp.mfe',[]).component('reactComponent', react2angular(AngularTestComponent.default,['message']));
 export default angular.module('ngapp.mfe').name;
