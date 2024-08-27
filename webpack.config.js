@@ -8,6 +8,7 @@ const deps = require("./package.json").dependencies;
 module.exports = {
     entry: './src/app.module.js',
     output: {
+        //publicPath: "http://localhost:9000/pilot/mfe-angularjs-expose/"
         publicPath: "http://localhost:3000/",
         path: __dirname + "/dist",
         // path: path.join(__dirname, "./bin"),
