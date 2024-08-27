@@ -60,18 +60,40 @@ module.exports = {
     },
     plugins: [
       new ModuleFederationPlugin({
-        name: "ng-app-example",
+        name: "ng_mfe_expose",
         filename: "remoteEntry.js",
         remotes: {
           "common": "common@http://127.0.0.1:9000/pilot/common/remoteEntry.js",
+          // "nextjscomponents": "nextjscomponents@http://127.0.0.1/_next/static/remoteEntry.js",
+          // "nextjscomponents": "nextjscomponents@http://127.0.0.1:3007/_next/pages/board-list.js",
+          // "nextjscomponents": `promise new Promise(res=>{
+          //   getRemoteVersionForHost('consumer', 'nextjscomponents').then(('http://127.0.0.1:3007/_next/static/remoteEntry.js')=>{
+          //     injectRemoteScript('http://127.0.0.1:3007/_next/static/remoteEntry.js').then()=>{
+                
+          //     }
+          //   })
+          // })`
         },
-        exposes: {},
-        shared: {
-          // ...deps,
-        },
+        // exposes: {
+        //   "./MfeAngularComponent": "./src/modules/mfe-expose/MfeExposeComponent.js",
+        // },
+        // shared: {
+        //   "angular" : { singleton: true, requiredVersion: deps.angular },
+        //   "angular-route" : { singleton: true, requiredVersion: deps["angular-route"] },
+        //   "angular2react" : { singleton: true, requiredVersion: deps["angular2react"] },
+        //   "ajv": { singleton: true, requiredVersion: deps.ajv },
+        //   "autoprefixer": { singleton: true },
+        //   "@uirouter/angularjs": { singleton: true, requiredVersion: deps["@uirouter/angularjs"]}
+        // },
       }),
       new HtmlWebPackPlugin({
         template: "./index.html",
+        title: "Webpack and Angularjs 1.x application example"
       }),
+    //   new webpack.ContextReplacementPlugin(
+    //     /\@angular(\\|\/)/,
+    //     path.join(__dirname, '$_lazy_route_resources'),
+    //     {}
+    // ),
     ],
 }
